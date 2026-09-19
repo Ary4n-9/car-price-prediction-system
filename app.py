@@ -645,23 +645,46 @@ footer {
    AGE
 ----------------------------------------------------------- */
 
+
 .age-box {
     margin-top: 2px;
     margin-bottom: 18px;
-
     padding: 15px;
-
     background: #f7faff;
-
     border: 1px solid #e2eaf4;
     border-radius: 13px;
 }
 
 .age-description {
     margin: -3px 0 10px;
-
     color: #71839a;
     font-size: 12px;
+}
+
+.age-input,
+.age-input > div,
+.age-input .wrap {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+.age-input input {
+    display: block !important;
+    width: 100% !important;
+    min-height: 46px !important;
+    padding: 10px 13px !important;
+    color: #17304f !important;
+    background: #ffffff !important;
+    border: 1px solid #cfdae8 !important;
+    border-radius: 10px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    box-shadow: none !important;
+}
+
+.age-input input:focus {
+    border-color: #2c83f6 !important;
+    box-shadow: 0 0 0 3px rgba(44,131,246,.10) !important;
 }
 
 
@@ -1383,8 +1406,8 @@ with gr.Blocks(
                     maximum=30,
                     precision=0,
                     show_label=False,
-                    container=False,
-                    elem_classes="clean-input",
+                    container=True,
+                    elem_classes="age-input",
                 )
 
 
