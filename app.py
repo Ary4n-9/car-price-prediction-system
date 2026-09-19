@@ -425,7 +425,10 @@ CSS = r"""
 }
 
 body {
-    background: var(--bg) !important;
+    background:
+        radial-gradient(circle at 8% 8%, rgba(109,94,247,.07), transparent 32%),
+        radial-gradient(circle at 95% 18%, rgba(34,193,220,.08), transparent 30%),
+        var(--bg) !important;
 }
 
 .gradio-container {
@@ -599,6 +602,9 @@ footer {
 
 .input-panel {
     padding: 26px !important;
+    position: sticky !important;
+    top: 18px;
+    align-self: flex-start !important;
 }
 
 .results-panel {
@@ -614,7 +620,9 @@ footer {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1.5px dashed var(--border);
 }
 
 .input-header-icon {
@@ -655,22 +663,26 @@ footer {
 
 .field-box {
     margin-bottom: 14px;
-    padding: 13px 14px 14px;
+    padding: 14px 15px 15px;
 
     background: var(--surface-2);
 
-    border: 1px solid var(--border-soft);
+    border: 1.5px solid var(--border-soft);
     border-radius: var(--radius-sm);
-    transition: border-color .15s ease, background .15s ease;
+    transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
 }
 
 .field-box:hover {
-    border-color: #d9deee;
+    border-color: #c9c2ff;
+    background: #fcfbff;
+    box-shadow: 0 6px 16px -10px rgba(109, 94, 247, .35);
 }
 
 .field-label {
-    display: block;
-    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
 
     color: #334155;
     font-size: 12.5px;
@@ -758,10 +770,10 @@ footer {
 }
 
 .predict-button {
-    min-height: 52px !important;
+    min-height: 54px !important;
 
     border: none !important;
-    border-radius: 13px !important;
+    border-radius: 14px !important;
 
     color: white !important;
 
@@ -926,12 +938,23 @@ footer {
 .recommendation-title {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
 
     color: #0f172a;
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 800;
-    letter-spacing: -.3px;
+    letter-spacing: -.4px;
+}
+
+.recommendation-title .star {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #ffe08a, var(--gold));
+    box-shadow: 0 6px 14px -6px rgba(242, 183, 5, .5);
+    font-size: 15px;
 }
 
 .star {
@@ -966,6 +989,54 @@ footer {
     gap: 14px;
 }
 
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding: 46px 30px;
+
+    background:
+        linear-gradient(180deg, var(--surface-2), var(--surface));
+    border: 1.5px dashed var(--border);
+    border-radius: var(--radius-md);
+}
+
+.empty-state-icon {
+    width: 64px;
+    height: 64px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 18px;
+    background: var(--accent-soft);
+
+    font-size: 30px;
+}
+
+.empty-state-title {
+    color: #1e293b;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.empty-state-text {
+    max-width: 340px;
+    margin-top: 6px;
+
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    line-height: 1.6;
+}
+
+.empty-state-text strong {
+    color: var(--accent-ink);
+}
+
 
 /* -----------------------------------------------------------
    CAR CARDS
@@ -996,8 +1067,31 @@ footer {
 }
 
 .rank-one {
+    position: relative;
     border-color: #f5dfa0;
     background: linear-gradient(180deg, #fffbf0, #ffffff);
+}
+
+.rank-one::before {
+    content: "★ Best Match";
+
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 5px 14px;
+
+    color: #7a5200;
+    background: linear-gradient(135deg, #ffe08a, var(--gold));
+
+    border-radius: 999px;
+    box-shadow: 0 6px 14px -4px rgba(242, 183, 5, .55);
+
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    white-space: nowrap;
 }
 
 .rank-three {
@@ -1025,6 +1119,10 @@ footer {
 
     font-size: 12.5px;
     font-weight: 900;
+}
+
+.rank-one {
+    padding-top: 20px;
 }
 
 .rank-one .rank-badge {
@@ -1222,6 +1320,10 @@ footer {
         padding: 20px 14px;
     }
 
+    .input-panel {
+        position: static !important;
+    }
+
     .cars-grid {
         grid-template-columns: 1fr;
     }
@@ -1343,8 +1445,7 @@ with gr.Blocks(
                     <div>
                         <h2>Enter Car Details</h2>
                         <p>
-                            Fill in the details to predict the price
-                            and find similar cars.
+                            Takes less than a minute — fill in the fields below.
                         </p>
                     </div>
 
@@ -1361,7 +1462,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">Present Price <span>(Lakhs)</span></div>'
+                        '<div class="field-label">💰 Present Price <span>(Lakhs)</span></div>'
                     )
 
                     present_price = gr.Number(
@@ -1379,7 +1480,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">Kilometres Driven</div>'
+                        '<div class="field-label">🛣️ Kilometres Driven</div>'
                     )
 
                     kms_driven = gr.Number(
@@ -1400,7 +1501,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">Fuel Type</div>'
+                        '<div class="field-label">⛽ Fuel Type</div>'
                     )
 
                     fuel_type = gr.Dropdown(
@@ -1421,7 +1522,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">Seller Type</div>'
+                        '<div class="field-label">🏷️ Seller Type</div>'
                     )
 
                     seller_type = gr.Dropdown(
@@ -1444,7 +1545,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">Transmission</div>'
+                        '<div class="field-label">⚙️ Transmission</div>'
                     )
 
                     transmission = gr.Dropdown(
@@ -1464,7 +1565,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">Previous Owners</div>'
+                        '<div class="field-label">👤 Previous Owners</div>'
                     )
 
                     past_owners = gr.Dropdown(
@@ -1487,7 +1588,7 @@ with gr.Blocks(
             ):
 
                 gr.HTML(
-                    '<div class="field-label">Car Age (Years)</div>'
+                    '<div class="field-label">📅 Car Age (Years)</div>'
                 )
 
                 gr.HTML(
@@ -1590,22 +1691,14 @@ with gr.Blocks(
 
                     </div>
 
-                    <div class="cars-grid">
-
-                        <div class="car-card">
-
-                            <div class="car-image-area">
-                                <div class="car-photo-fallback">
-                                    🚗
-                                </div>
-                            </div>
-
-                            <div class="car-name">
-                                Waiting for prediction
-                            </div>
-
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🚘</div>
+                        <div class="empty-state-title">No results yet</div>
+                        <div class="empty-state-text">
+                            Fill in the car details on the left and hit
+                            <strong>Predict Price &amp; Find Cars</strong>
+                            to see your estimate and closest matches here.
                         </div>
-
                     </div>
 
                 </div>
