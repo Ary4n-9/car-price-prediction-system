@@ -1,3 +1,4 @@
+
 import os
 import html
 import json
@@ -374,47 +375,10 @@ def reset_form():
 
 
 # ============================================================
-# CUSTOM CSS — MODERNIZED
+# CUSTOM CSS
 # ============================================================
 
 CSS = r"""
-
-/* -----------------------------------------------------------
-   TOKENS
------------------------------------------------------------ */
-
-:root {
-    --bg: #f5f7fb;
-    --surface: #ffffff;
-    --surface-2: #f8fafd;
-    --border: #e6ebf3;
-    --border-soft: #eef2f8;
-    --ink: #10192b;
-    --ink-soft: #64748b;
-    --ink-faint: #94a3b8;
-
-    --accent: #6d5ef7;
-    --accent-2: #22c1dc;
-    --accent-ink: #4c3fd6;
-    --accent-soft: #f0edfe;
-
-    --success: #17a367;
-    --success-soft: #e4f9ee;
-    --danger: #e5484d;
-    --danger-soft: #fdeceb;
-
-    --gold: #f2b705;
-    --bronze: #e08e45;
-
-    --radius-lg: 22px;
-    --radius-md: 16px;
-    --radius-sm: 12px;
-
-    --shadow-sm: 0 1px 2px rgba(16, 25, 43, .04);
-    --shadow-md: 0 10px 30px -12px rgba(16, 25, 43, .12);
-    --shadow-lg: 0 20px 50px -18px rgba(76, 63, 214, .28);
-}
-
 
 /* -----------------------------------------------------------
    GLOBAL
@@ -425,23 +389,20 @@ CSS = r"""
 }
 
 body {
-    background:
-        radial-gradient(circle at 8% 8%, rgba(109,94,247,.07), transparent 32%),
-        radial-gradient(circle at 95% 18%, rgba(34,193,220,.08), transparent 30%),
-        var(--bg) !important;
+    background: #f3f7fc !important;
 }
 
 .gradio-container {
-    max-width: 1480px !important;
+    max-width: 1450px !important;
     margin: 0 auto !important;
     padding: 0 !important;
-    background: var(--bg) !important;
-    color: var(--ink) !important;
+    background: #f3f7fc !important;
     font-family:
-        "Inter",
+        Inter,
         ui-sans-serif,
         system-ui,
         -apple-system,
+        BlinkMacSystemFont,
         "Segoe UI",
         sans-serif !important;
 }
@@ -450,134 +411,91 @@ footer {
     display: none !important;
 }
 
-::selection {
-    background: var(--accent-soft);
-    color: var(--accent-ink);
-}
-
 
 /* -----------------------------------------------------------
    HERO
 ----------------------------------------------------------- */
 
 .hero {
-    position: relative;
-    overflow: hidden;
-
-    margin: 18px 18px 0;
-    padding: 40px 46px 34px;
+    margin: 0;
+    padding: 30px 55px 27px;
     min-height: 190px;
 
     color: white;
 
     background:
-        radial-gradient(circle at 15% 15%, rgba(255,255,255,.16), transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(34,193,220,.35), transparent 45%),
-        linear-gradient(120deg, #241c5e 0%, #4c3fd6 48%, #6d5ef7 100%);
+        radial-gradient(
+            circle at 87% 25%,
+            rgba(62, 164, 255, 0.30),
+            transparent 25%
+        ),
+        linear-gradient(
+            110deg,
+            #0b2748 0%,
+            #123d68 52%,
+            #0d3157 100%
+        );
 
-    border-radius: 28px;
-    box-shadow: var(--shadow-lg);
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
-    background-size: 22px 22px;
-    opacity: .05;
-    pointer-events: none;
-}
-
-.hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-
-    margin-bottom: 14px;
-    padding: 6px 13px;
-
-    color: #e7e4ff;
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 999px;
-
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    backdrop-filter: blur(6px);
+    border-radius: 0 0 24px 24px;
 }
 
 .hero-title {
     margin: 0;
-    font-size: 42px;
-    font-weight: 800;
-    letter-spacing: -1.3px;
-    line-height: 1.08;
+    font-size: 40px;
+    font-weight: 850;
+    letter-spacing: -1px;
 }
 
 .hero-title span {
-    background: linear-gradient(90deg, #9ff0ff, #c9c2ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #31a9ff;
 }
 
 .hero-subtitle {
-    margin-top: 10px;
-    max-width: 560px;
-
-    color: #dcd9fb;
-    font-size: 15.5px;
-    line-height: 1.5;
+    margin-top: 8px;
+    color: #dbeaff;
+    font-size: 16px;
 }
 
 .feature-row {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 26px;
+    gap: 28px;
+    margin-top: 23px;
 }
 
 .feature {
     display: flex;
     align-items: center;
-    gap: 11px;
+    gap: 10px;
+    padding-right: 28px;
+    border-right: 1px solid rgba(255,255,255,.14);
+}
 
-    padding: 10px 16px 10px 10px;
-
-    background: rgba(255,255,255,.10);
-    border: 1px solid rgba(255,255,255,.16);
-    border-radius: 14px;
-    backdrop-filter: blur(6px);
+.feature:last-child {
+    border-right: none;
 }
 
 .feature-icon {
-    width: 34px;
-    height: 34px;
-    flex-shrink: 0;
+    width: 37px;
+    height: 37px;
 
     display: grid;
     place-items: center;
 
-    border-radius: 10px;
-    background: rgba(255,255,255,.14);
+    border-radius: 50%;
+    background: rgba(255,255,255,.10);
 
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .feature strong {
     display: block;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
 }
 
 .feature small {
     display: block;
-    margin-top: 1px;
-    color: #c9c5f4;
+    margin-top: 2px;
+    color: #bcd0e7;
     font-size: 11px;
 }
 
@@ -587,28 +505,27 @@ footer {
 ----------------------------------------------------------- */
 
 .main-row {
-    padding: 26px 18px 10px;
+    padding: 25px 32px 10px;
     gap: 22px !important;
     align-items: stretch !important;
 }
 
 .input-panel,
 .results-panel {
-    background: var(--surface) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: var(--radius-lg) !important;
-    box-shadow: var(--shadow-md) !important;
+    background: #ffffff !important;
+    border: 1px solid #dce7f3 !important;
+    border-radius: 18px !important;
+
+    box-shadow:
+        0 8px 28px rgba(27, 65, 105, .07) !important;
 }
 
 .input-panel {
-    padding: 26px !important;
-    position: sticky !important;
-    top: 18px;
-    align-self: flex-start !important;
+    padding: 25px !important;
 }
 
 .results-panel {
-    padding: 22px !important;
+    padding: 20px !important;
 }
 
 
@@ -619,40 +536,39 @@ footer {
 .input-header {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 22px;
-    padding-bottom: 20px;
-    border-bottom: 1.5px dashed var(--border);
+    gap: 13px;
+    margin-bottom: 23px;
 }
 
 .input-header-icon {
-    width: 46px;
-    height: 46px;
-    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
 
     display: grid;
     place-items: center;
 
-    border-radius: 14px;
+    border-radius: 12px;
 
     color: white;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    background: linear-gradient(
+        135deg,
+        #2476f5,
+        #16a4f7
+    );
 
-    font-size: 20px;
-    box-shadow: 0 8px 18px -6px rgba(109, 94, 247, .55);
+    font-size: 21px;
 }
 
 .input-header h2 {
     margin: 0;
-    color: var(--ink);
-    font-size: 20px;
+    color: #122c4f;
+    font-size: 22px;
     font-weight: 800;
-    letter-spacing: -.3px;
 }
 
 .input-header p {
     margin: 3px 0 0;
-    color: var(--ink-soft);
+    color: #71839a;
     font-size: 13px;
 }
 
@@ -662,36 +578,26 @@ footer {
 ----------------------------------------------------------- */
 
 .field-box {
-    margin-bottom: 14px;
+    margin-bottom: 17px;
     padding: 14px 15px 15px;
 
-    background: var(--surface-2);
+    background: #f7faff;
 
-    border: 1.5px solid var(--border-soft);
-    border-radius: var(--radius-sm);
-    transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
-}
-
-.field-box:hover {
-    border-color: #c9c2ff;
-    background: #fcfbff;
-    box-shadow: 0 6px 16px -10px rgba(109, 94, 247, .35);
+    border: 1px solid #e2eaf4;
+    border-radius: 13px;
 }
 
 .field-label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    display: block;
     margin-bottom: 8px;
 
-    color: #334155;
-    font-size: 12.5px;
-    font-weight: 700;
-    letter-spacing: -.1px;
+    color: #17365d;
+    font-size: 13px;
+    font-weight: 750;
 }
 
 .field-label span {
-    color: var(--accent-ink);
+    color: #1b72ed;
 }
 
 
@@ -710,28 +616,28 @@ footer {
 .clean-input input,
 .clean-input select,
 .clean-input textarea {
-    min-height: 44px !important;
+    min-height: 46px !important;
 
-    color: var(--ink) !important;
-    background: var(--surface) !important;
+    color: #17304f !important;
+    background: #ffffff !important;
 
-    border: 1.5px solid var(--border) !important;
+    border: 1px solid #cfdae8 !important;
     border-radius: 10px !important;
 
-    font-size: 14px !important;
     box-shadow: none !important;
-    transition: border-color .15s ease, box-shadow .15s ease !important;
 }
 
 .clean-input input:hover,
 .clean-input select:hover {
-    border-color: #c7cee0 !important;
+    border-color: #9ebce0 !important;
 }
 
 .clean-input input:focus,
 .clean-input select:focus {
-    border-color: var(--accent) !important;
-    box-shadow: 0 0 0 4px var(--accent-soft) !important;
+    border-color: #2c83f6 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(44,131,246,.10) !important;
 }
 
 
@@ -741,21 +647,20 @@ footer {
 
 .age-box {
     margin-top: 2px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 
-    padding: 16px;
+    padding: 15px;
 
-    background:
-        linear-gradient(135deg, var(--accent-soft), #eef9fb);
+    background: #f7faff;
 
-    border: 1px solid #e3ddfb;
-    border-radius: var(--radius-sm);
+    border: 1px solid #e2eaf4;
+    border-radius: 13px;
 }
 
 .age-description {
-    margin: -2px 0 10px;
+    margin: -3px 0 10px;
 
-    color: var(--ink-soft);
+    color: #71839a;
     font-size: 12px;
 }
 
@@ -766,54 +671,55 @@ footer {
 
 .button-row {
     gap: 12px !important;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 .predict-button {
-    min-height: 54px !important;
+    min-height: 52px !important;
 
     border: none !important;
-    border-radius: 14px !important;
+    border-radius: 12px !important;
 
     color: white !important;
 
     background:
-        linear-gradient(100deg, var(--accent), var(--accent-2)) !important;
+        linear-gradient(
+            100deg,
+            #1760f5,
+            #12a3f4
+        ) !important;
 
     font-size: 15px !important;
-    font-weight: 750 !important;
-    letter-spacing: -.1px !important;
+    font-weight: 800 !important;
 
-    box-shadow: 0 12px 24px -8px rgba(109, 94, 247, .55) !important;
-    transition: transform .15s ease, box-shadow .15s ease !important;
+    box-shadow:
+        0 8px 18px rgba(28,104,241,.20) !important;
+
+    transition: transform .15s ease,
+                box-shadow .15s ease !important;
 }
 
 .predict-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 30px -8px rgba(109, 94, 247, .6) !important;
-}
-
-.predict-button:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
+    box-shadow:
+        0 11px 23px rgba(28,104,241,.27) !important;
 }
 
 .reset-button {
     min-height: 52px !important;
 
-    border: 1.5px solid var(--border) !important;
-    border-radius: 13px !important;
+    border: 1px solid #d3dfec !important;
+    border-radius: 12px !important;
 
-    color: #475569 !important;
-    background: var(--surface) !important;
+    color: #29415e !important;
+    background: #f6f9fd !important;
 
     font-size: 15px !important;
-    font-weight: 700 !important;
-    transition: background .15s ease, border-color .15s ease !important;
+    font-weight: 750 !important;
 }
 
 .reset-button:hover {
-    background: var(--surface-2) !important;
-    border-color: #c7cee0 !important;
+    background: #edf4fb !important;
 }
 
 
@@ -822,67 +728,69 @@ footer {
 ----------------------------------------------------------- */
 
 .price-card {
-    position: relative;
-    overflow: hidden;
+    padding: 23px 25px;
 
-    padding: 26px 28px;
-
-    border: 1px solid #e2ddfb;
-    border-radius: var(--radius-md);
+    border: 1px solid #cfe5fb;
+    border-radius: 16px;
 
     background:
-        radial-gradient(circle at 95% 15%, rgba(34,193,220,.14), transparent 40%),
-        linear-gradient(135deg, #f6f4ff, #eef7ff);
+        radial-gradient(
+            circle at 92% 30%,
+            rgba(57,153,245,.16),
+            transparent 27%
+        ),
+        linear-gradient(
+            135deg,
+            #eef8ff,
+            #e5f3ff
+        );
 }
 
 .price-title-row {
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 12px;
 }
 
 .price-icon {
-    width: 46px;
-    height: 46px;
+    width: 45px;
+    height: 45px;
 
     display: grid;
     place-items: center;
 
-    color: white;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #1768e9;
+    background: #dceeff;
 
-    border-radius: 13px;
+    border-radius: 12px;
 
-    font-size: 21px;
+    font-size: 23px;
     font-weight: 900;
-    box-shadow: 0 8px 18px -6px rgba(109, 94, 247, .5);
 }
 
 .small-title {
-    color: #1e293b;
-    font-size: 12.5px;
-    font-weight: 800;
-    letter-spacing: .5px;
+    color: #153153;
+    font-size: 13px;
+    font-weight: 850;
+    letter-spacing: .3px;
 }
 
 .small-subtitle {
     margin-top: 3px;
-    color: var(--ink-soft);
+    color: #657a94;
     font-size: 12px;
 }
 
 .big-price {
-    margin: 18px 0 15px;
+    margin: 15px 0 14px;
 
-    background: linear-gradient(100deg, var(--accent-ink), var(--accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #1557e8;
 
-    font-size: 44px;
+    font-size: 43px;
     line-height: 1;
     font-weight: 900;
-    letter-spacing: -1.6px;
+
+    letter-spacing: -1.5px;
 }
 
 .estimate-message {
@@ -890,10 +798,10 @@ footer {
     align-items: center;
     gap: 8px;
 
-    padding: 9px 14px;
+    padding: 9px 13px;
 
-    color: var(--success);
-    background: var(--success-soft);
+    color: #17683b;
+    background: #def7e8;
 
     border-radius: 10px;
 
@@ -909,7 +817,7 @@ footer {
     place-items: center;
 
     color: white;
-    background: var(--success);
+    background: #20a25c;
 
     border-radius: 50%;
 
@@ -922,59 +830,41 @@ footer {
 ----------------------------------------------------------- */
 
 .recommendation-panel {
-    margin-top: 20px;
+    margin-top: 17px;
 }
 
 .recommendation-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
 
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
 
 .recommendation-title {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
-    color: #0f172a;
+    color: #142e50;
     font-size: 21px;
-    font-weight: 800;
-    letter-spacing: -.4px;
-}
-
-.recommendation-title .star {
-    display: inline-grid;
-    place-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #ffe08a, var(--gold));
-    box-shadow: 0 6px 14px -6px rgba(242, 183, 5, .5);
-    font-size: 15px;
+    font-weight: 850;
 }
 
 .star {
-    color: var(--gold);
+    color: #f5b51b;
 }
 
 .recommendation-subtitle {
     margin-top: 3px;
-    color: var(--ink-soft);
+    color: #71839a;
     font-size: 12px;
 }
 
 .match-badge {
-    padding: 8px 14px;
+    padding: 8px 13px;
 
-    color: var(--accent-ink);
-    background: var(--accent-soft);
+    color: #31597e;
+    background: #eef5fd;
 
-    border: 1px solid #e3ddfb;
-    border-radius: 999px;
+    border: 1px solid #dbe7f4;
+    border-radius: 20px;
 
     font-size: 11px;
     font-weight: 700;
@@ -989,54 +879,6 @@ footer {
     gap: 14px;
 }
 
-.empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    padding: 46px 30px;
-
-    background:
-        linear-gradient(180deg, var(--surface-2), var(--surface));
-    border: 1.5px dashed var(--border);
-    border-radius: var(--radius-md);
-}
-
-.empty-state-icon {
-    width: 64px;
-    height: 64px;
-
-    display: grid;
-    place-items: center;
-
-    margin-bottom: 14px;
-
-    border-radius: 18px;
-    background: var(--accent-soft);
-
-    font-size: 30px;
-}
-
-.empty-state-title {
-    color: #1e293b;
-    font-size: 15px;
-    font-weight: 800;
-}
-
-.empty-state-text {
-    max-width: 340px;
-    margin-top: 6px;
-
-    color: var(--ink-soft);
-    font-size: 12.5px;
-    line-height: 1.6;
-}
-
-.empty-state-text strong {
-    color: var(--accent-ink);
-}
-
 
 /* -----------------------------------------------------------
    CAR CARDS
@@ -1045,58 +887,36 @@ footer {
 .car-card {
     min-width: 0;
 
-    padding: 13px;
+    padding: 12px;
 
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
+    border: 1px solid #dce6f1;
+    border-radius: 15px;
 
-    background: var(--surface);
+    background: #ffffff;
 
-    box-shadow: var(--shadow-sm);
+    box-shadow:
+        0 5px 17px rgba(32,65,101,.05);
 
     transition:
         transform .18s ease,
-        box-shadow .18s ease,
-        border-color .18s ease;
+        box-shadow .18s ease;
 }
 
 .car-card:hover {
-    transform: translateY(-4px);
-    border-color: #d9deee;
-    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(32,65,101,.12);
 }
 
 .rank-one {
-    position: relative;
-    border-color: #f5dfa0;
-    background: linear-gradient(180deg, #fffbf0, #ffffff);
-}
-
-.rank-one::before {
-    content: "★ Best Match";
-
-    position: absolute;
-    top: -1px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    padding: 5px 14px;
-
-    color: #7a5200;
-    background: linear-gradient(135deg, #ffe08a, var(--gold));
-
-    border-radius: 999px;
-    box-shadow: 0 6px 14px -4px rgba(242, 183, 5, .55);
-
-    font-size: 10.5px;
-    font-weight: 800;
-    letter-spacing: .2px;
-    white-space: nowrap;
+    border-color: #f1d27b;
+    background: #fffdf8;
 }
 
 .rank-three {
-    border-color: #f2d5bd;
-    background: linear-gradient(180deg, #fff8f2, #ffffff);
+    border-color: #e9cfc1;
+    background: #fffaf7;
 }
 
 .card-header {
@@ -1106,118 +926,105 @@ footer {
 }
 
 .rank-badge {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
 
     display: grid;
     place-items: center;
 
     border-radius: 50%;
 
-    color: var(--accent-ink);
-    background: var(--accent-soft);
+    color: #234363;
+    background: #eaf2fc;
 
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 900;
 }
 
-.rank-one {
-    padding-top: 20px;
-}
-
 .rank-one .rank-badge {
-    color: #8a5a00;
-    background: linear-gradient(135deg, #ffe08a, var(--gold));
+    color: #704d00;
+    background: #ffc83d;
 }
 
 .rank-three .rank-badge {
     color: white;
-    background: linear-gradient(135deg, var(--bronze), #c96a2a);
+    background: #d98c55;
 }
 
 .heart {
-    color: var(--danger);
-    font-size: 21px;
+    color: #df3b47;
+    font-size: 23px;
     line-height: 1;
-    transition: transform .12s ease;
-}
-
-.heart:hover {
-    transform: scale(1.15);
 }
 
 .car-image-area {
     width: 100%;
-    height: 118px;
+    height: 115px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-top: 4px;
+    margin-top: 3px;
 
     overflow: hidden;
 
-    border-radius: 12px;
-    background:
-        radial-gradient(circle at 30% 20%, #ffffff, var(--surface-2) 70%);
-    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    background: #f8fbfe;
 }
 
 .car-photo {
     display: block;
 
     width: 100%;
-    height: 118px;
+    height: 115px;
 
     object-fit: contain;
 
-    background: transparent;
+    background: #f8fbfe;
 }
 
 .car-photo-fallback {
     width: 100%;
-    height: 118px;
+    height: 115px;
 
     display: grid;
     place-items: center;
 
-    color: #b7c2d6;
-    background: transparent;
+    color: #6c87a4;
+    background: #f8fbfe;
 
-    font-size: 46px;
+    font-size: 48px;
 }
 
 .car-name {
-    min-height: 22px;
+    min-height: 23px;
 
-    margin-top: 8px;
+    margin-top: 7px;
 
     text-align: center;
 
-    color: var(--ink);
+    color: #183554;
 
-    font-size: 14.5px;
-    font-weight: 750;
-    letter-spacing: -.2px;
+    font-size: 15px;
+    font-weight: 850;
 
     text-transform: capitalize;
 }
 
 .car-price {
-    margin-top: 9px;
-    padding: 9px;
+    margin-top: 8px;
+    padding: 8px;
 
     text-align: center;
 
-    color: white;
-    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    color: #1559e8;
+    background: #e5f0ff;
 
     border-radius: 18px;
 
-    font-size: 14.5px;
-    font-weight: 800;
-    box-shadow: 0 8px 16px -8px rgba(109, 94, 247, .55);
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .car-specs {
@@ -1225,26 +1032,22 @@ footer {
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 8px 6px;
+    gap: 7px 5px;
 
-    margin-top: 12px;
-    padding: 10px 10px;
+    margin-top: 11px;
+    padding: 0 3px 2px;
 
-    background: var(--surface-2);
-    border: 1px solid var(--border-soft);
-    border-radius: 10px;
+    color: #61758c;
+
+    font-size: 10px;
 }
 
 .car-specs > div {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
 
     min-width: 0;
-
-    color: #334155;
-    font-size: 11.5px;
-    font-weight: 650;
 
     white-space: nowrap;
     overflow: hidden;
@@ -1253,17 +1056,6 @@ footer {
 
 .spec-icon {
     flex-shrink: 0;
-
-    width: 20px;
-    height: 20px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 6px;
-    background: var(--accent-soft);
-
-    font-size: 11px;
 }
 
 
@@ -1272,13 +1064,13 @@ footer {
 ----------------------------------------------------------- */
 
 .error-card {
-    background: var(--danger-soft);
-    border-color: #f7c6c7;
+    background: #fff5f5;
+    border-color: #ffd2d2;
 }
 
 .error-text {
     margin-top: 10px;
-    color: #b3282d;
+    color: #a52d2d;
     font-weight: 700;
 }
 
@@ -1291,22 +1083,15 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
 
-    margin: 6px 18px 22px;
-    padding: 16px 24px;
+    padding: 14px 38px 18px;
 
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-
-    color: var(--ink-soft);
-    font-size: 11.5px;
+    color: #708299;
+    font-size: 11px;
 }
 
 .footer strong {
-    color: #1e293b;
+    color: #294766;
 }
 
 
@@ -1317,11 +1102,7 @@ footer {
 @media (max-width: 1050px) {
 
     .main-row {
-        padding: 20px 14px;
-    }
-
-    .input-panel {
-        position: static !important;
+        padding: 20px;
     }
 
     .cars-grid {
@@ -1329,34 +1110,36 @@ footer {
     }
 
     .feature-row {
-        gap: 10px;
+        gap: 15px;
     }
 }
 
 @media (max-width: 800px) {
 
     .hero {
-        margin: 10px 10px 0;
-        padding: 26px 22px;
+        padding: 25px;
     }
 
     .hero-title {
-        font-size: 30px;
+        font-size: 31px;
     }
 
     .feature-row {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
+    }
+
+    .feature {
+        border-right: none;
     }
 
     .main-row {
-        padding: 14px 10px;
+        padding: 15px;
     }
 
     .footer {
         flex-direction: column;
-        align-items: flex-start;
-        margin: 6px 10px 18px;
+        gap: 8px;
     }
 }
 """
@@ -1377,14 +1160,12 @@ with gr.Blocks(
         """
         <div class="hero">
 
-            <div class="hero-eyebrow">✦ Machine Learning · Used Car Pricing</div>
-
             <h1 class="hero-title">
                 Smart Car <span>Price Predictor</span>
             </h1>
 
             <div class="hero-subtitle">
-                Predict the fair selling price of a used car in seconds, and discover the closest matching listings from our dataset.
+                Predict the selling price of a used car and get matching car recommendations.
             </div>
 
             <div class="feature-row">
@@ -1445,7 +1226,8 @@ with gr.Blocks(
                     <div>
                         <h2>Enter Car Details</h2>
                         <p>
-                            Takes less than a minute — fill in the fields below.
+                            Fill in the details to predict the price
+                            and find similar cars.
                         </p>
                     </div>
 
@@ -1462,7 +1244,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">💰 Present Price <span>(Lakhs)</span></div>'
+                        '<div class="field-label">Present Price <span>(Lakhs)</span></div>'
                     )
 
                     present_price = gr.Number(
@@ -1480,7 +1262,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">🛣️ Kilometres Driven</div>'
+                        '<div class="field-label">Kilometres Driven</div>'
                     )
 
                     kms_driven = gr.Number(
@@ -1501,7 +1283,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">⛽ Fuel Type</div>'
+                        '<div class="field-label">Fuel Type</div>'
                     )
 
                     fuel_type = gr.Dropdown(
@@ -1522,7 +1304,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">🏷️ Seller Type</div>'
+                        '<div class="field-label">Seller Type</div>'
                     )
 
                     seller_type = gr.Dropdown(
@@ -1545,7 +1327,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">⚙️ Transmission</div>'
+                        '<div class="field-label">Transmission</div>'
                     )
 
                     transmission = gr.Dropdown(
@@ -1565,7 +1347,7 @@ with gr.Blocks(
                 ):
 
                     gr.HTML(
-                        '<div class="field-label">👤 Previous Owners</div>'
+                        '<div class="field-label">Previous Owners</div>'
                     )
 
                     past_owners = gr.Dropdown(
@@ -1588,7 +1370,7 @@ with gr.Blocks(
             ):
 
                 gr.HTML(
-                    '<div class="field-label">📅 Car Age (Years)</div>'
+                    '<div class="field-label">Car Age (Years)</div>'
                 )
 
                 gr.HTML(
@@ -1691,14 +1473,22 @@ with gr.Blocks(
 
                     </div>
 
-                    <div class="empty-state">
-                        <div class="empty-state-icon">🚘</div>
-                        <div class="empty-state-title">No results yet</div>
-                        <div class="empty-state-text">
-                            Fill in the car details on the left and hit
-                            <strong>Predict Price &amp; Find Cars</strong>
-                            to see your estimate and closest matches here.
+                    <div class="cars-grid">
+
+                        <div class="car-card">
+
+                            <div class="car-image-area">
+                                <div class="car-photo-fallback">
+                                    🚗
+                                </div>
+                            </div>
+
+                            <div class="car-name">
+                                Waiting for prediction
+                            </div>
+
                         </div>
+
                     </div>
 
                 </div>
