@@ -1050,7 +1050,7 @@ footer {
 
 .car-image-area {
     width: 100%;
-    height: 112px;
+    height: 118px;
 
     display: flex;
     align-items: center;
@@ -1060,30 +1060,32 @@ footer {
 
     overflow: hidden;
 
-    border-radius: 11px;
-    background: var(--surface-2);
+    border-radius: 12px;
+    background:
+        radial-gradient(circle at 30% 20%, #ffffff, var(--surface-2) 70%);
+    border: 1px solid var(--border-soft);
 }
 
 .car-photo {
     display: block;
 
     width: 100%;
-    height: 112px;
+    height: 118px;
 
     object-fit: contain;
 
-    background: var(--surface-2);
+    background: transparent;
 }
 
 .car-photo-fallback {
     width: 100%;
-    height: 112px;
+    height: 118px;
 
     display: grid;
     place-items: center;
 
-    color: #a3b1c6;
-    background: var(--surface-2);
+    color: #b7c2d6;
+    background: transparent;
 
     font-size: 46px;
 }
@@ -1106,17 +1108,18 @@ footer {
 
 .car-price {
     margin-top: 9px;
-    padding: 8px;
+    padding: 9px;
 
     text-align: center;
 
-    color: var(--accent-ink);
-    background: var(--accent-soft);
+    color: white;
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
 
     border-radius: 18px;
 
     font-size: 14.5px;
     font-weight: 800;
+    box-shadow: 0 8px 16px -8px rgba(109, 94, 247, .55);
 }
 
 .car-specs {
@@ -1124,22 +1127,26 @@ footer {
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 7px 5px;
+    gap: 8px 6px;
 
-    margin-top: 11px;
-    padding: 0 2px 1px;
+    margin-top: 12px;
+    padding: 10px 10px;
 
-    color: var(--ink-soft);
-
-    font-size: 10.5px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
 }
 
 .car-specs > div {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 
     min-width: 0;
+
+    color: #334155;
+    font-size: 11.5px;
+    font-weight: 650;
 
     white-space: nowrap;
     overflow: hidden;
@@ -1148,6 +1155,17 @@ footer {
 
 .spec-icon {
     flex-shrink: 0;
+
+    width: 20px;
+    height: 20px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 6px;
+    background: var(--accent-soft);
+
+    font-size: 11px;
 }
 
 
